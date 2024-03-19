@@ -1,0 +1,26 @@
+POST http://localhost:3000/books
+
+{
+		"ID":               "2",
+		"Title":            "APJ",
+		"Author":           "APJ",
+		"published_date":    "09/07/1999",
+		"original_language": "Hindi"
+}
+
+
+GET http://localhost:3000/books/{ID}
+
+NO PAYLOAD
+
+PUT http://localhost:3000/books/{ID}
+
+{
+  "id":"2",
+ "title":"APJ",
+ "author":"APJ",
+ "published_date":"09/07/1999",
+ "original_language":"HINDI"
+}
+
+DELETE http://localhost:3000/books/{ID}

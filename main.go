@@ -23,11 +23,11 @@ func main() {
 
 func BookRoutes() chi.Router {
 	r := chi.NewRouter()
-	bookHandler := handlers.BookHandler{}
-	r.Get("/", bookHandler.ListBooks)
-	r.Post("/", bookHandler.CreateBook)
-	r.Get("/{id}", bookHandler.GetBooks)
-	r.Put("/{id}", bookHandler.UpdateBook)
-	r.Delete("/{id}", bookHandler.DeleteBook)
+	//bookHandler := handlers.BookHandler{}
+	r.Get("/", handlers.ListBooks)
+	r.Post("/", handlers.CreateBook)
+	r.Get("/{id}", handlers.GetBooks)
+	r.Put("/{id}", handlers.UpdateBook)
+	r.Delete("/{id}", handlers.DeleteBook)
 	return r
 }

@@ -12,9 +12,33 @@ import (
 type BookHandler struct {
 }
 
-func getBooks(id string) *models.Book {
+func GetBooks(id string) *models.Book {
 	for _, book := range models.Books {
 		if book.ID == id {
+			return book
+		}
+	}
+	return nil
+}
+
+func StoreBook(book models.Book) {
+	models.Books = append(models.Books, &book)
+}
+
+func DeleteBook(id string) *models.Book {
+	for i, book := range models.Books {
+		if book.ID == id {
+			models.Books = append(models.Books[:i], (models.Books)[i+1:]...)
+			return &models.Book{}
+		}
+	}
+	return nil
+}
+
+func UpdateBook(id string, bookUpdate models.Book) *models.Book {
+	for i, book := range models.Books {
+		if book.ID == id {
+			models.Books[i] = &bookUpdate
 			return book
 		}
 	}
