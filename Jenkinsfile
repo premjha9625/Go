@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Cloning our Git') { 
             steps { 
-                git 'https://github.com/premjha9625/Go' 
+                git 'https://github.com/premjha9625/Go.git' 
             }
         }
         stage('Build') {
