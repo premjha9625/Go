@@ -1,71 +1,40 @@
-pipeline { 
+pipeline {
+    agent any
 
-    environment { 
-
-        registry = "885185/go-api" 
-
-        registryCredential = 'dockerhub' 
-
-        dockerImage = '' 
-
+    environment {
+        // Define Docker Hub credentials
+        DOCKER_HUB_CREDENTIALS = 'dockerhub'
+        // Define the Docker image name and tag
+        DOCKER_IMAGE_NAME = '885185/go-api'
+        DOCKER_IMAGE_TAG = 'latest'
     }
 
-    agent any 
+    stages {
+        stage('Build') {
+            steps {
+                scripts{
+                // Checkout the source code from your Git repository
+                //git 'https://github.com/premjha9625/Go'
 
-    stages { 
+                // Build the Go application
+                sh 'go build -o myapp'
 
-        // stage('Cloning our Git') { 
-
-        //     steps { 
-
-        //         git 'https://github.com/premjha9625/Go' 
-
-        //     }
-
-        // } 
-
-        stage('Building our image') { 
-
-            steps { 
-
-                script { 
-
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
-
+                // Build the Docker image
+                sh 'docker build -t ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} .'
                 }
-
-            } 
-
+            }
         }
 
-        stage('Deploy our image') { 
+        stage('Push') {
+            steps {
+                // Authenticate with Docker Hub
+                withCredentials([usernamePassword(credentialsId: DOCKER_HUB_CREDENTIALS, usernameVariable: 'DOCKER_HUB_USERNAME', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
+                    sh "docker login -u ${DOCKER_HUB_USERNAME} -p ${DOCKER_HUB_PASSWORD}"
+                }
 
-            steps { 
-
-                script { 
-
-                    docker.withRegistry( '', registryCredential ) { 
-
-                        dockerImage.push() 
-
-                    }
-
-                } 
-
+                // Push the Docker image to Docker Hub
+                sh "docker push ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
             }
-
-        } 
-
-        stage('Cleaning up') { 
-
-            steps { 
-
-                sh "docker rmi $registry:$BUILD_NUMBER" 
-
-            }
-
-        } 
-
+        }
     }
-
 }
