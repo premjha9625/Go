@@ -12,6 +12,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                git 'https://github.com/premjha9625/Go'
+            }
+            steps {
                 scripts{
                 // Checkout the source code from your Git repository
                 //git 'https://github.com/premjha9625/Go'
