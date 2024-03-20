@@ -17,10 +17,10 @@ pipeline {
                 git 'https://github.com/premjha9625/Go/'
 
                 // Build the Go application
-                sh 'go build -o myapp'
+                //sh 'go build -o myapp'
 
                 // Build the Docker image
-                sh 'docker build -t ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} .'
+                docker build -t ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} .
                 }
             }
         }
