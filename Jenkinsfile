@@ -70,7 +70,8 @@ pipeline {
         stage('Clone repository') {
             steps{
             git credentialsId: 'github', 
-            url: 'https://github.com/premjha9625/Go'
+            url: 'https://github.com/premjha9625/Go',
+            branch: 'dev'
             }
     }
         stage('Build image') {
