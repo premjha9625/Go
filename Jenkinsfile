@@ -77,7 +77,8 @@ pipeline {
         stage('Build image') {
             steps{
                 script{
-       dockerImage = docker.build("885185/go-api:latest")
+       //dockerImage = docker.build("885185/go-api:latest")
+                    sh 'docker build -t ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} .'
             }
             }
     }
@@ -85,11 +86,16 @@ pipeline {
             steps{
                 script{
         withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
-        dockerImage.push()
+        sh "docker push ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
         }
                 }
         }
-    } 
+    }
+        stage('Cleaning up') { 
+            steps { 
+                sh "docker rmi $registry:$BUILD_NUMBER" 
+            }
+        } 
         
         
     }
