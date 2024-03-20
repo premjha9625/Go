@@ -10,10 +10,12 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
-            steps {
-                git 'https://github.com/premjha9625/Go'
+        stage('Cloning our Git') { 
+            steps { 
+                git 'https://github.com/premjha9625/Go' 
             }
+        }
+        stage('Build') {
             steps {
                 scripts{
                 // Checkout the source code from your Git repository
