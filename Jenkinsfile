@@ -68,15 +68,21 @@ pipeline {
         // }
         // }
         stage('Clone repository') {
+            steps{
             git credentialsId: 'git', 
             url: 'https://github.com/premjha9625/Go'
+            }
     }
         stage('Build image') {
+            steps{
        dockerImage = docker.build("885185/go-api:latest")
+            }
     }
         stage('Push image') {
+            steps{
         withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
         dockerImage.push()
+        }
         }
     } 
         
