@@ -20,7 +20,7 @@ pipeline {
                 //sh 'go build -o myapp'
 
                 // Build the Docker image
-                docker build -t ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} .
+                sh 'docker build -t ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} .'
                 }
             }
         }
