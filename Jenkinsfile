@@ -75,14 +75,18 @@ pipeline {
     }
         stage('Build image') {
             steps{
+                script{
        dockerImage = docker.build("885185/go-api:latest")
+            }
             }
     }
         stage('Push image') {
             steps{
+                script{
         withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
         dockerImage.push()
         }
+                }
         }
     } 
         
