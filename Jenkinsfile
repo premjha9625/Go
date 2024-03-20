@@ -19,7 +19,7 @@ pipeline {
         //         branch: 'main'
         //         git 'https://github.com/premjha9625/Go.git' 
         //     }
-            withCredentials([usernamePassword(credentialsId: GITHUB_CREDENTIALS, passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+            withCredentials([usernamePassword(credentialsId: 'GITHUB_CREDENTIALS', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                         git 'https://github.com/premjha9625/Go.git'                       
                     }
             }
