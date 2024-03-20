@@ -25,13 +25,13 @@ pipeline {
             }
          }
         }
-        stage('Checkout'){
-           steps {
-                git credentialsId: 'github', 
-                url: 'https://github.com/premjha9625/Go.git',
-                branch: 'dev'
-           }
-        }
+        // stage('Checkout'){
+        //    steps {
+        //         git credentialsId: 'github', 
+        //         url: 'https://github.com/premjha9625/Go.git',
+        //         branch: 'dev'
+        //    }
+        // }
         stage('Build') {
             steps {
                 scripts{
