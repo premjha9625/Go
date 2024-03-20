@@ -12,8 +12,8 @@ pipeline {
 
     stages {
         stage('Cloning our Git') { 
-            scripts{
-        steps { 
+            steps{
+        scripts { 
         //         git credentialsId: 'f87a34a8-0e09-45e7-b9cf-6dc68feac670', 
         //         url: 'https://github.com/premjha9625/Go.git',
         //         branch: 'main'
