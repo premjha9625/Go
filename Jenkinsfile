@@ -11,20 +11,20 @@ pipeline {
     }
 
     stages {
-        stage('Cloning our Git') { 
-            steps{
-        scripts { 
+        // stage('Cloning our Git') { 
+        //     steps{
+        // scripts { 
         //         git credentialsId: 'f87a34a8-0e09-45e7-b9cf-6dc68feac670', 
         //         url: 'https://github.com/premjha9625/Go.git',
         //         branch: 'main'
         //         git 'https://github.com/premjha9625/Go.git' 
         //     }
-            withCredentials([usernamePassword(credentialsId: 'GITHUB_CREDENTIALS', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                        git 'https://github.com/premjha9625/Go.git'                       
-                    }
-            }
-         }
-        }
+        //     withCredentials([usernamePassword(credentialsId: 'GITHUB_CREDENTIALS', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+        //                 git 'https://github.com/premjha9625/Go.git'                       
+        //             }
+        //     }
+        //  }
+        // }
         // stage('Checkout'){
         //    steps {
         //         git credentialsId: 'github', 
