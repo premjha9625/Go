@@ -14,15 +14,15 @@ pipeline {
 
     stages { 
 
-        stage('Cloning our Git') { 
+        // stage('Cloning our Git') { 
 
-            steps { 
+        //     steps { 
 
-                git 'https://github.com/premjha9625/Go' 
+        //         git 'https://github.com/premjha9625/Go' 
 
-            }
+        //     }
 
-        } 
+        // } 
 
         stage('Building our image') { 
 
