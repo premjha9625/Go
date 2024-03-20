@@ -3,9 +3,9 @@ pipeline {
 
     environment {
         // Define Docker Hub credentials
-        DOCKER_HUB_CREDENTIALS = 'docker-hub-credentials'
+        DOCKER_HUB_CREDENTIALS = credentials(dockerhub)
         // Define the Docker image name and tag
-        DOCKER_IMAGE_NAME = 'your-dockerhub-username/your-go-app'
+        DOCKER_IMAGE_NAME = '885185/go-api'
         DOCKER_IMAGE_TAG = 'latest'
     }
 
@@ -13,7 +13,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Checkout the source code from your Git repository
-                git 'https://github.com/your-repo/your-go-app.git'
+                git 'https://github.com/premjha9625/Go'
 
                 // Build the Go application
                 sh 'go build -o myapp'
