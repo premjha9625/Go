@@ -11,6 +11,13 @@ pipeline {
     }
 
     stages {
+        stage('Checkout'){
+           steps {
+                git credentialsId: 'github', 
+                url: 'https://github.com/premjha9625/Go.git',
+                branch: 'dev'
+           }
+        }
         // stage('Cloning our Git') { 
         //     steps{
         // scripts { 
