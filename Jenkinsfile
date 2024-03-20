@@ -14,7 +14,7 @@ pipeline {
             steps {
                 scripts{
                 // Checkout the source code from your Git repository
-                git 'https://github.com/premjha9625/Go'
+                //git 'https://github.com/premjha9625/Go'
 
                 // Build the Go application
                 //sh 'go build -o myapp'
