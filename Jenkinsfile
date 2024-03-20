@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Define Docker Hub credentials
-        DOCKER_HUB_CREDENTIALS = credentials(dockerhub)
+        DOCKER_HUB_CREDENTIALS = credentials('dockerhub')
         // Define the Docker image name and tag
         DOCKER_IMAGE_NAME = '885185/go-api'
         DOCKER_IMAGE_TAG = 'latest'
