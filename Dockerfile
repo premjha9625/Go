@@ -14,7 +14,7 @@ RUN go mod download
 COPY *.go ./
 
 # Build
-//RUN CGO_ENABLED=0 GOOS=linux go build -o /docker-gs-pin
+#RUN CGO_ENABLED=0 GOOS=linux go build -o /docker-gs-pin
 
 RUN go build -o /docker-gs-pin
 
